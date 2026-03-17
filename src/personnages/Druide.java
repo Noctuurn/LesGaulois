@@ -1,5 +1,7 @@
 package personnages;
 
+import objets.Chaudron;
+
 public class Druide {
 	private String nom;
 	private int force;
@@ -13,12 +15,18 @@ public class Druide {
 		return "Le druide " + nom + " : ";
 	}
 	
-	public void fabriquerPotion(quantite,forcePotion) {
-
+	public void fabriquerPotion(int quantite,int forcePotion) {
+		chaudron.remplirChaudron(quantite, forcePotion);
+		parler("J'ai concocté"+ quantite +" doses de potion magique. Elle a une force de "+ forcePotion +".");
 	}
 	
-	public void booster() {
-		
+	public void booster(Gaulois gaulois) {
+		if (chaudron.resterPotion() == true) {
+			if (gaulois.getNom()== "Obélix") {
+				
+			}
+			
+		}
 	}
 
 	public String getNom() {
