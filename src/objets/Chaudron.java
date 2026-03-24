@@ -10,15 +10,15 @@ public void remplirChaudron(int quantite, int forcePotion){
 }
 
 public boolean resterPotion(){
-    if (this.quantitePotion > 0 ) {
-        return true;
-    } else {
-        return false;
-    }
+    return this.quantitePotion > 0;
 }
 
 public int prendreLouche(){
-	return 0;
+	this.quantitePotion --;
+	if (quantitePotion == 0) {
+		forcePotion = 0 ;
+	}
+	return forcePotion;
 }
 
 }
