@@ -55,8 +55,8 @@ public void setVillage(Village village) {
 	this.village = village;
 }
 
-public void sePresenter() {
-	
+public void sePresenter() { // TODO Rajouter les cas pour le chef, le villageois et le nomade (sans village)
+	this.parler("Bonjour, je m'appelle"+this.nom+". J'habite le village"+this.village+);
 }
 
 }

@@ -8,34 +8,58 @@ public class Village {
 	private Gaulois chef;
 	private Gaulois[] villageois;
 
-	public Village(final int NB_VILLAGEOIS_MAX) {
-		villageois = new Gaulois[NB_VILLAGEOIS_MAX];
+	public Village(String nom, Gaulois chef, int NB_VILLAGEOIS_MAX) {
+		this.nom = nom;
+		this.chef = chef;
+		this.villageois = new Gaulois[NB_VILLAGEOIS_MAX];
 	}
-	
+
+	public static void main(String[] args) {
+		Gaulois Abraracourcix = new Gaulois("Abraracourcix",6);
+		Village village = new Village("Village des Irréductibles",Abraracourcix,30);
+		village.trouverVillageois(30);
+		Gaulois Asterix = new Gaulois("Asterix",8);
+		village.ajouterVillageois(Asterix);
+
+		Gaulois gaulois = village.trouverVillageois(0);
+		System.out.println(gaulois);
+		gaulois = village.trouverVillageois(2);
+		System.out.println(gaulois);
+	}
 	
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
 	public Gaulois getChef() {
-		return chef;
+		return this.chef;
 	}
 	
 	public void ajouterVillageois(Gaulois gaulois) {
-		for (int i = 0; i < villageois.length; i++){
-			if (villageois[i]!= null) {
-				villageois[i] = gaulois;
-			}
+		if (nbVillageois < villageois.length) {
+			villageois[nbVillageois] = gaulois;
+			nbVillageois++;
+			gaulois.setVillage(this);
+		}else {
+			System.out.println("Le village est plein, impossible d'ajouter " + gaulois +" !");
 		}
-		this.nbVillageois++;
-		gaulois.setVillage(this.nom); // erreur aussi
 	}
 	
-	public Gaulois trouverVillageois(int numVillageois) { // erreur
-		
+	public Gaulois trouverVillageois(int numVillageois) {
+		if (numVillageois >= 0 && numVillageois < this.nbVillageois) {
+			return this.villageois[numVillageois];
+		} else {
+			System.out.println("Il n'y a pas autant d'habitants dans notre village !");
+			return null;
+		}
 	}
 
 	public void afficherVillage() {
-		println("AUUUUUGH");
+		System.out.println("Dans le village \""+this.nom+"\" du chef "+this.chef+" vivent les légendaires gaulois :");
+		for (Gaulois gaulois : villageois) {
+			if (gaulois != null){
+				System.out.println("- "+ gaulois);
+			}
+		}
 	}
 
 }
