@@ -35,7 +35,7 @@ public class Village {
 	}
 
 	public void afficherVillage() {
-		
+		println("AUUUUUGH");
 	}
 
 }
