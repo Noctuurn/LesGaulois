@@ -55,8 +55,19 @@ public void setVillage(Village village) {
 	this.village = village;
 }
 
-public void sePresenter() { // TODO Rajouter les cas pour le chef, le villageois et le nomade (sans village)
-	this.parler("Bonjour, je m'appelle"+this.nom+". J'habite le village"+this.village+);
-}
+public void sePresenter() {
+        // 1. Si le gaulois n'a pas de village
+        if (this.village == null) {
+            this.parler("Bonjour, je m'appelle " + this.nom + ". Je voyage de villages en villages."); // [cite: 203]
+        }
+        // 2. Sinon, si le gaulois est le chef de son village
+        else if (this.village.getChef() == this) {
+            this.parler("Bonjour, je m'appelle " + this.nom + ". Je suis le chef du village " + this.village.getNom() + "."); // [cite: 198, 199]
+        }
+        // 3. Sinon, c'est un simple habitant
+        else {
+            this.parler("Bonjour, je m'appelle " + this.nom + ". J'habite le " + this.village.getNom() + "."); // [cite: 201]
+        }
+    }
 
 }
