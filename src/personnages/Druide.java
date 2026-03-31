@@ -5,8 +5,14 @@ import objets.Chaudron;
 public class Druide {
 	private String nom;
 	private int force;
-	private Chaudron chaudron;
-	
+	private Chaudron chaudron = new Chaudron();
+
+	public Druide(final String nom, final int force) {
+		this.nom = nom;
+		this.force = force;
+
+	}
+
 	public void parler(String texte ) {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
 	}

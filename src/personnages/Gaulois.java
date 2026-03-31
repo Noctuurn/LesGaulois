@@ -1,10 +1,14 @@
 package personnages;
 
 import village_gaulois.Village;
+import objets.Equipement;
 
 public class Gaulois {
 private String nom;
+
 private int force;
+private int nbTrophees;
+private Equipement[] trophees = new Equipement[100];
 private int effetPotion;
 private Village village;
 
@@ -22,6 +26,7 @@ public void parler(String texte) {
 	System.out.println(prendreParole() + "\"" + texte + "\"");
 }
 
+
 private String prendreParole() {
 	return "Le gaulois " + nom + " : ";
 }
@@ -32,17 +37,21 @@ public static void main(String[] args) {
 	
 }
 
-@Override
-public String toString() {
-	return nom;
-}
+
+
+
+
 
 public void frapper(Romain romain) {
-	System.out.println(nom + " Envoie un grand coup dans la mâchoire de " + romain.getNom());
-	romain.recevoirCoup(force*effetPotion/3);
-	if (effetPotion > 1) {
-		this.effetPotion--;
+	System.out.println(nom + " envoie un grand coup dans la mâchoire de "+ romain.getNom());
+	Equipement[] trophies = romain.recevoirCoup((force / 3) * effetPotion);
+	effetPotion--;
+	if (effetPotion < 1) {
+		effetPotion = 1;
 		
+	}
+	for (int i = 0; trophies != null && i < trophies.length; i++, nbTrophees++) {
+		this.trophees[nbTrophees] = trophies[i];
 	}
 }
 
@@ -56,17 +65,15 @@ public void setVillage(Village village) {
 }
 
 public void sePresenter() {
-        // 1. Si le gaulois n'a pas de village
+	String presentation = "Bonjour, je m'appelle";
         if (this.village == null) {
-            this.parler("Bonjour, je m'appelle " + this.nom + ". Je voyage de villages en villages."); // [cite: 203]
+            this.parler(presentation + this.nom + ". Je voyage de villages en villages.");
         }
-        // 2. Sinon, si le gaulois est le chef de son village
         else if (this.village.getChef() == this) {
-            this.parler("Bonjour, je m'appelle " + this.nom + ". Je suis le chef du village " + this.village.getNom() + "."); // [cite: 198, 199]
-        }
-        // 3. Sinon, c'est un simple habitant
+            this.parler(presentation + this.nom + ". Je suis le chef du village " + this.village.getNom() + ".");
+            }
         else {
-            this.parler("Bonjour, je m'appelle " + this.nom + ". J'habite le " + this.village.getNom() + "."); // [cite: 201]
+            this.parler(presentation + this.nom + ". J'habite le " + this.village.getNom() + ".");
         }
     }
 

@@ -1,8 +1,8 @@
 package objets; 
 
 public enum Equipement {
-    CASQUE("casque"), 
-    BOUCLIER("bouclier"); 
+    CASQUE("Casque"), 
+    BOUCLIER("Bouclier"); 
 
     private String nom; 
 
