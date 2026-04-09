@@ -28,7 +28,6 @@ public class Scenario {
 		do {
 			asterix.frapper(minus);
 		} while (minus.getForce() > 0);
-		
 //		PARTIE 5 : a decommenter
 //		milexcus.parler("UN GAU... UN GAUGAU...");
 //		do {
@@ -38,7 +37,6 @@ public class Scenario {
 
 //		Musee musee = new Musee();
 //		obelix.faireUneDonnation(musee);
-
 	}
 
 }

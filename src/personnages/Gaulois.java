@@ -37,14 +37,9 @@ public static void main(String[] args) {
 	
 }
 
-
-
-
-
-
 public void frapper(Romain romain) {
 	System.out.println(nom + " envoie un grand coup dans la mâchoire de "+ romain.getNom());
-	Equipement[] trophies = romain.recevoirCoup((force / 3) * effetPotion);
+	Equipement[] trophies = romain.recevoirCoup((force / 2) * effetPotion);
 	effetPotion--;
 	if (effetPotion < 1) {
 		effetPotion = 1;

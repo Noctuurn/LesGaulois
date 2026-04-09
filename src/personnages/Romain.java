@@ -68,32 +68,40 @@ public class Romain {
     public Equipement[] recevoirCoup(int forceCoup) {
     	Equipement[] equipementEjecte = null;
     	forceCoup = calculResistanceEquipement(forceCoup);
-    	force -= forceCoup;
-    	if (force==0) {
-            parler("Aïe");
-        }
-    	else{
-    		equipementEjecte = ejecterEquipement();
+
+        if (forceCoup > 0){
+            force -= forceCoup;}
+
+    	if (forceCoup<0) { // tant que le romain à de la force, dit Aïe, sinon il abandonne et perd tout son équipement.
+            equipementEjecte = ejecterEquipement();
     		parler("J'abandonne...");
+        } else{
+            parler("Aïe");
     	}
+
+        if (forceCoup==0){
+            parler("Alors Asterix on fait moins le malin face à mon équipement, Hi ! Hi !");
+        }
     	return equipementEjecte;
     }
 
     private int calculResistanceEquipement(int forceCoup) {
+        /*Calcule la diminution des dégats d'un coup reçu si le romain porte un équipement.*/
         String texte;
     	texte = "Ma force est de " + this.force + ", et la force du coup est de" + forceCoup;
     	int resistanceEquipement = 0;
-    	if (nbEquipement != 0) {
-    		texte += "\nMais heureusement, grace à mon équipement sa force est diminué de ";
-    		for (int i = 0; i < nbEquipement;) {
-    			if ((equipements[i] != null && equipements[i].equals(Equipement.BOUCLIER)) ) {
-    				resistanceEquipement += 8;
+    	if (nbEquipement != 0) { // Si le romain est équipé
+    		texte += "\nMais heureusement, grace à mon équipement sa force est diminuée de ";
+
+    		for (int i = 0; i < nbEquipement;i++) {
+    			if ((equipements[i] != null && equipements[i].equals(Equipement.BOUCLIER)) ) { // Si il y a au moins un équipement et si l'objet équipé est le shield
+                    resistanceEquipement += 6;
     			} else {
     				System.out.println("Equipement casque");
-    				resistanceEquipement += 5;
+    				resistanceEquipement += 3;
     			}
     		}
-    		texte += resistanceEquipement + "!";
+    		texte += resistanceEquipement + " !";
     	}
     	
     	parler(texte);

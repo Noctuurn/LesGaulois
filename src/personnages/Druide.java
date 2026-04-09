@@ -23,13 +23,13 @@ public class Druide {
 	
 	public void fabriquerPotion(int quantite,int forcePotion) {
 		chaudron.remplirChaudron(quantite, forcePotion);
-		parler("J'ai concocté"+ quantite +" doses de potion magique. Elle a une force de "+ forcePotion +".");
+		parler("J'ai concocté "+ quantite +" doses de potion magique. Elle a une force de "+ forcePotion +".");
 	}
 	
 	public void booster(Gaulois gaulois) {
 		if (chaudron.resterPotion() == true) {
 			if (gaulois.getNom()== "Obélix") {
-				parler("Non"+gaulois.getNom()+"Non... Et tu le sais très bien !");
+				parler("Non "+gaulois.getNom()+". Non... Et tu le sais très bien !");
 			}
 			else {
 				gaulois.boirePotion(chaudron.prendreLouche());
