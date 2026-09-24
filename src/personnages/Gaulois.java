@@ -1,8 +1,8 @@
 package personnages;
 
 public class Gaulois {
-	private String nom;
-	private int force;
+	private final String nom;
+	private final int force;
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -24,6 +24,13 @@ public class Gaulois {
 	@Override
 	public String toString() {
 		return nom;
+	}
+
+	public void frapper(Romain romain){
+		String nomRomain = romain.getNom();
+		System.out.println(nom + " met une golden à " + nomRomain + ".");
+		int forceCoup = force/3;
+		romain.recevoirCoup(forceCoup);
 	}
 
 	static void main() {
