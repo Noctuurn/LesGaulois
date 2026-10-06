@@ -3,7 +3,7 @@ package personnages;
 public class Druide {
     private String nom;
     private int force;
-    Chaudron chaudron;
+    Chaudron chaudron = new Chaudron();
 
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
@@ -29,11 +29,16 @@ public class Druide {
 
             }
         } else {
-            parler("Désolé " + nomGaulois + " mais il n'y a plus une seule goutte de potion !");
+            parler("Désolé "+nomGaulois+" mais il n'y a plus une seule goutte de potion !");
         }
     }
 
     public String getNom() {
         return nom;
+    }
+
+    public Druide(String nom, int force) {
+        this.nom = nom;
+        this.force = force;
     }
 }
