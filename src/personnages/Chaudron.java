@@ -14,7 +14,7 @@ public class Chaudron {
     }
 
     public int prendreLouche(){
-        quantitePotion -= this.quantitePotion;
+        quantitePotion -= 1;
         return this.forcePotion;
     }
 
